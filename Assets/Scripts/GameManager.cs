@@ -4,7 +4,7 @@ using TMPro;
 
 public class GameManager : MonoBehaviour
 {
-   public static GameManager Instance { get; private set; }
+    public static GameManager Instance { get; private set; }
 
     [Header("Clicker Stats")]
     public int score = 0;
@@ -13,11 +13,13 @@ public class GameManager : MonoBehaviour
     public int powerUpgrade = 0;
     public int powerCost = 50;
     public int autoCost = 100;
+    public float clickTime = 1f;
 
     [Header("UI References")]
     public TMP_Text scoreText;
     public TMP_Text upgradeText;
     public TMP_Text autoText;
+    public TMP_Text prestigeText;
 
     private void Awake()
     {
@@ -32,13 +34,13 @@ public class GameManager : MonoBehaviour
             Destroy(gameObject); // Destroy duplicate GameManagers
         }
     }
-    
+
     public void addScore()
     {
-        score += (clickPower + powerUpgrade) * 2;
+        score += clickPower + powerUpgrade * 2;
         scoreText.text = "Score: " + score;
     }
-     public void shopPower()
+    public void shopPower()
     {
         if (score >= powerCost)
         {
@@ -55,20 +57,37 @@ public class GameManager : MonoBehaviour
         {
             score = score - autoCost;
             clickUpgrade++;
+            clickTime = clickTime * .95f;
             autoCost = autoCost * (clickUpgrade + powerUpgrade);
             autoText.text = "Auto: " + autoCost;
         }
     }
 
-
-    void Start()
+    public void shopPrestiege()
     {
-        
+        if (clickUpgrade + powerUpgrade >= clickPower * 2)
+        {
+            score = 0;
+            powerUpgrade = 0;
+            clickUpgrade = 0;
+            clickPower = clickPower * 2;
+            prestigeText.text = "Prestige! Upgrades: " + (clickPower * 2);
+            powerCost = 50;
+            autoCost = 100;
+            autoText.text = "Auto: " + autoCost;
+            upgradeText.text = "Upgrade: " + powerCost;
+            scoreText.text = "Score: " + score;
+        }
     }
-
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
-        
+        if (clickUpgrade > 0)
+        {
+            if (Time.time >= clickTime)
+            {
+                addScore();
+                clickTime += 2;
+            }
+        }
     }
 }

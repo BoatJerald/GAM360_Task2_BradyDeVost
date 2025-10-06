@@ -16,4 +16,9 @@ public class Button : MonoBehaviour
     {
         GameManager.Instance.shopAuto();
     }
+
+    public void buyPrestige()
+    {
+        GameManager.Instance.shopPrestiege();
+    }
 }
