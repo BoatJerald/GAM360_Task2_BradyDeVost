@@ -14,12 +14,15 @@ public class GameManager : MonoBehaviour
     public int powerCost = 50;
     public int autoCost = 100;
     public float clickTime = 1f;
+    public float upgradeTime = 1f;
+    float clickTimer;
 
     [Header("UI References")]
     public TMP_Text scoreText;
     public TMP_Text upgradeText;
     public TMP_Text autoText;
     public TMP_Text prestigeText;
+    public TMP_Text upgradeAmount;
 
     private void Awake()
     {
@@ -40,14 +43,16 @@ public class GameManager : MonoBehaviour
         score += clickPower + powerUpgrade * 2;
         scoreText.text = "Score: " + score;
     }
+
     public void shopPower()
     {
         if (score >= powerCost)
         {
             score = score - powerCost;
             powerUpgrade++;
-            powerCost = powerCost * (clickUpgrade + powerUpgrade);
+            powerCost = powerCost * 2;
             upgradeText.text = "Upgrade: " + powerCost;
+            upgradeAmount.text = "Upgrades: " + (powerUpgrade + clickUpgrade);
         }
     }
 
@@ -57,37 +62,39 @@ public class GameManager : MonoBehaviour
         {
             score = score - autoCost;
             clickUpgrade++;
-            clickTime = clickTime * .95f;
-            autoCost = autoCost * (clickUpgrade + powerUpgrade);
+            upgradeTime = upgradeTime - 0.1f;
+            autoCost = autoCost * 2;
             autoText.text = "Auto: " + autoCost;
+            upgradeAmount.text = "Upgrades: " + (powerUpgrade + clickUpgrade);
         }
     }
 
     public void shopPrestiege()
     {
-        if (clickUpgrade + powerUpgrade >= clickPower * 2)
+        if (clickUpgrade + powerUpgrade >= (clickPower * 2)- 1)
         {
             score = 0;
             powerUpgrade = 0;
             clickUpgrade = 0;
+            upgradeTime = 1f;
             clickPower = clickPower * 2;
-            prestigeText.text = "Prestige! Upgrades: " + (clickPower * 2);
+            prestigeText.text = "Prestige! Upgrades: " + ((clickPower * 2) - 1);
             powerCost = 50;
             autoCost = 100;
             autoText.text = "Auto: " + autoCost;
             upgradeText.text = "Upgrade: " + powerCost;
             scoreText.text = "Score: " + score;
+            upgradeAmount.text = "Upgrades: " + (powerUpgrade + clickUpgrade);
         }
     }
-    private void Update()
+    public void Update()
     {
-        if (clickUpgrade > 0)
-        {
-            if (Time.time >= clickTime)
+        clickTimer += Time.deltaTime;
+
+        if (clickTimer >= clickTime )
             {
                 addScore();
-                clickTime += 2;
+                clickTimer -= upgradeTime;
             }
-        }
     }
 }
