@@ -21,4 +21,19 @@ public class Button : MonoBehaviour
     {
         GameManager.Instance.shopPrestiege();
     }
+
+    public void letsGo()
+    {
+        GameManager.Instance.startGame();
+    }
+
+    public void pressQuit()
+    {
+        GameManager.Instance.quitGame();
+    }
+
+    public void goAgain()
+    {
+        GameManager.Instance.restart();
+    }
 }

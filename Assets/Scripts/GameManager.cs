@@ -23,9 +23,13 @@ public class GameManager : MonoBehaviour
     public TMP_Text autoText;
     public TMP_Text prestigeText;
     public TMP_Text upgradeAmount;
+    public GameObject gameUI;
+    public GameObject startMenu;
+    public GameObject endScreen;
 
     private void Awake()
     {
+        Time.timeScale = 0f;
         // Singleton pattern implementation
         if (Instance == null)
         {
@@ -36,6 +40,44 @@ public class GameManager : MonoBehaviour
         {
             Destroy(gameObject); // Destroy duplicate GameManagers
         }
+    }
+
+    public void startGame()
+    {
+        if (startMenu) startMenu.SetActive(false);
+        if (gameUI) gameUI.SetActive(true);
+        Time.timeScale = 1f;
+    }
+
+    public void restart()
+    {
+        score = 0;
+        clickPower = 1;
+        powerUpgrade = 0;
+        clickUpgrade = 0;
+        upgradeTime = 1f;
+        powerCost = 50;
+        autoCost = 100;
+        scoreText.text = "Score: " + score;
+        upgradeText.text = "Upgrade: " + powerCost;
+        autoText.text = "Auto: " + autoCost;
+        upgradeAmount.text = "Upgrades: " + (powerUpgrade + clickUpgrade);
+        prestigeText.text = "Prestige! Upgrades: " + ((clickPower * 2) - 1);
+        if (gameUI) gameUI.SetActive(true);
+        if (endScreen) endScreen.SetActive(false);
+        Time.timeScale = 1f;
+    }
+
+    public void quitGame()
+    {
+        Application.Quit();
+    }
+
+    public void winGame()
+    {
+        if (gameUI) gameUI.SetActive(false);
+        if (endScreen) endScreen.SetActive(true);
+        Time.timeScale = 0f;
     }
 
     public void addScore()
@@ -71,8 +113,13 @@ public class GameManager : MonoBehaviour
 
     public void shopPrestiege()
     {
-        if (clickUpgrade + powerUpgrade >= (clickPower * 2)- 1)
+        if (clickUpgrade + powerUpgrade >= (clickPower * 2) - 1)
         {
+            if (clickPower == 4)
+            {
+                winGame();
+            }
+
             score = 0;
             powerUpgrade = 0;
             clickUpgrade = 0;
