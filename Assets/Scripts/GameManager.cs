@@ -93,8 +93,18 @@ public class GameManager : MonoBehaviour
             score = score - powerCost;
             powerUpgrade++;
             powerCost = powerCost * 2;
-            upgradeText.text = "Upgrade: " + powerCost;
+
+            if (powerCost == 12800)
+            {
+                upgradeText.text = "Max Upgrades";
+            }
+            else
+            {
+                upgradeText.text = "Upgrade: " + powerCost;
+            }
+
             upgradeAmount.text = "Upgrades: " + (powerUpgrade + clickUpgrade);
+            scoreText.text = "Score: " + score;
         }
     }
 
@@ -104,10 +114,27 @@ public class GameManager : MonoBehaviour
         {
             score = score - autoCost;
             clickUpgrade++;
-            upgradeTime = upgradeTime - 0.1f;
+            if (upgradeTime <= .25f)
+            {
+                upgradeTime = .1f;
+            }
+            else
+            {
+                upgradeTime = upgradeTime - 0.125f;
+            }
+
             autoCost = autoCost * 2;
-            autoText.text = "Auto: " + autoCost;
+
+            if (autoCost == 12800)
+            {
+                autoText.text = "Max Upgrades";
+            }
+            else
+            {
+                autoText.text = "Auto: " + autoCost;
+            }
             upgradeAmount.text = "Upgrades: " + (powerUpgrade + clickUpgrade);
+            scoreText.text = "Score: " + score;
         }
     }
 
@@ -115,7 +142,7 @@ public class GameManager : MonoBehaviour
     {
         if (clickUpgrade + powerUpgrade >= (clickPower * 2) - 1)
         {
-            if (clickPower == 4)
+            if (clickPower == 8)
             {
                 winGame();
             }
@@ -138,7 +165,7 @@ public class GameManager : MonoBehaviour
     {
         clickTimer += Time.deltaTime;
 
-        if (clickTimer >= clickTime )
+        if (clickTimer >= clickTime)
             {
                 addScore();
                 clickTimer -= upgradeTime;
