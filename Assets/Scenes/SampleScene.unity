@@ -171,6 +171,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b2014ed0b5c4fe834941b96bf88ae132, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Button
+  blip: {fileID: 8300000, guid: 9b4edf3c2a426734fb479df0e3a993ba, type: 3}
+  yippie: {fileID: 8300000, guid: 145223f00b905a8419c6d9a84b25a066, type: 3}
 --- !u!114 &114515342
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -556,6 +558,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b2014ed0b5c4fe834941b96bf88ae132, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Button
+  blip: {fileID: 8300000, guid: 9b4edf3c2a426734fb479df0e3a993ba, type: 3}
+  yippie: {fileID: 8300000, guid: 145223f00b905a8419c6d9a84b25a066, type: 3}
 --- !u!114 &191189741
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1364,6 +1368,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b2014ed0b5c4fe834941b96bf88ae132, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Button
+  blip: {fileID: 8300000, guid: 9b4edf3c2a426734fb479df0e3a993ba, type: 3}
+  yippie: {fileID: 8300000, guid: 145223f00b905a8419c6d9a84b25a066, type: 3}
 --- !u!114 &748654082
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1510,6 +1516,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b2014ed0b5c4fe834941b96bf88ae132, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Button
+  blip: {fileID: 8300000, guid: 9b4edf3c2a426734fb479df0e3a993ba, type: 3}
+  yippie: {fileID: 8300000, guid: 145223f00b905a8419c6d9a84b25a066, type: 3}
 --- !u!114 &846407971
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2138,6 +2146,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b2014ed0b5c4fe834941b96bf88ae132, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Button
+  blip: {fileID: 0}
+  yippie: {fileID: 0}
 --- !u!114 &1083380641
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2514,6 +2524,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b2014ed0b5c4fe834941b96bf88ae132, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Button
+  blip: {fileID: 8300000, guid: 9b4edf3c2a426734fb479df0e3a993ba, type: 3}
+  yippie: {fileID: 8300000, guid: 145223f00b905a8419c6d9a84b25a066, type: 3}
 --- !u!1 &1232639713
 GameObject:
   m_ObjectHideFlags: 0
@@ -2566,6 +2578,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b2014ed0b5c4fe834941b96bf88ae132, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Button
+  blip: {fileID: 8300000, guid: 9b4edf3c2a426734fb479df0e3a993ba, type: 3}
+  yippie: {fileID: 8300000, guid: 145223f00b905a8419c6d9a84b25a066, type: 3}
 --- !u!114 &1232639716
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2806,6 +2820,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b2014ed0b5c4fe834941b96bf88ae132, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Button
+  blip: {fileID: 8300000, guid: 9b4edf3c2a426734fb479df0e3a993ba, type: 3}
+  yippie: {fileID: 8300000, guid: 145223f00b905a8419c6d9a84b25a066, type: 3}
 --- !u!1 &1485165973
 GameObject:
   m_ObjectHideFlags: 0
@@ -3224,6 +3240,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1656149328}
   - component: {fileID: 1656149327}
+  - component: {fileID: 1656149329}
   m_Layer: 0
   m_Name: AudioManager
   m_TagString: Untagged
@@ -3243,7 +3260,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c6e23822efb0634582103810ebd10a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::AudioManager
-  EffectsSource: {fileID: 0}
+  EffectsSource: {fileID: 1656149329}
 --- !u!4 &1656149328
 Transform:
   m_ObjectHideFlags: 0
@@ -3259,6 +3276,103 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!82 &1656149329
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1656149326}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_Resource: {fileID: 0}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 2.4727783
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &1658897201
 GameObject:
   m_ObjectHideFlags: 0
